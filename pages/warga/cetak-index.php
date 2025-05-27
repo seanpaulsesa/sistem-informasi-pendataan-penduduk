@@ -15,7 +15,7 @@ class PDF extends FPDF
     	// Move to the right
     	// $this->Cell(60);
     	// Title
-  $this->Cell(308,8,'PENGURUS RT. 004 RW 01',0,1,'C');
+        $this->Cell(308,8,'PENGURUS RT. 004 RW 01',0,1,'C');
         $this->Cell(308,8,'DESA. NEGARA BUMI, KEC. SUNGKAI TENGAH',0,1,'C');
     	$this->Cell(308,8,'KABUPATEN LAMPUNG UTARA',0,1,'C');
     	// Line break

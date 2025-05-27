@@ -7,7 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../dasbor">Aplikasi Pendataan Warga</a>
+      <a class="btn" href="../dasbor">
+        <img src="../../assets/img/logo-kota-jayapura.png" alt="Logo" style="height: 30px; margin-right: 10px;">
+        Aplikasi Pendataan Warga
+
+      </a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">

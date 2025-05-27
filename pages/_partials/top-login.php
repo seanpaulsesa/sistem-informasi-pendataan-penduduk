@@ -7,7 +7,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Aplikasi Pendataan Warga">
     <meta name="author" content="Murti Ayu Wijayanti">
-    <link rel="icon" href="../../../favicon.ico">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/logo-kota-jayapura.png">
 
     <title>Aplikasi Pendataan Warga</title>
 

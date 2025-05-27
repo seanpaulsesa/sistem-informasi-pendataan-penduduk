@@ -55,3 +55,25 @@ $jumlah_mutasi_ld_17 = mysqli_fetch_assoc($hasil_mutasi_ld_17);
 $query_mutasi_kd_17 = "SELECT COUNT(*) AS total FROM mutasi WHERE TIMESTAMPDIFF(YEAR, tanggal_lahir_mutasi, CURDATE()) < 17 AND tanggal_lahir_mutasi != '0000-00-00'";
 $hasil_mutasi_kd_17 = mysqli_query($db, $query_mutasi_kd_17);
 $jumlah_mutasi_kd_17 = mysqli_fetch_assoc($hasil_mutasi_kd_17);
+
+// hitung statistik warga berdasarkan agama
+// nama tabel: warga
+// nama field: agama_warga 
+// enum('Islam','Kristen','Katholik','Hindu','Budha','Konghucu')
+
+// total agama islam
+// Daftar agama sesuai enum
+$daftar_agama = ['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha', 'Konghucu'];
+
+// Inisialisasi dengan nilai default 0
+$jumlah_agama = array_fill_keys($daftar_agama, 0);
+
+// Ambil data dari database
+$query_agama = "SELECT agama_warga, COUNT(*) AS total FROM warga GROUP BY agama_warga";
+$hasil_agama = mysqli_query($db, $query_agama);
+
+// Isi data dari database
+while ($row = mysqli_fetch_assoc($hasil_agama)) {
+    $jumlah_agama[$row['agama_warga']] = (int) $row['total'];
+}
+

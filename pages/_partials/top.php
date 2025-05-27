@@ -22,6 +22,8 @@ if (!isset($_SESSION['user'])) {
     <!-- Bootstrap core CSS -->
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/img/logo-kota-jayapura.png">
+
     <!-- DataTable CSS -->
     <link href="../../assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
