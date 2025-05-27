@@ -20,12 +20,12 @@
     <div class="col-lg-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Statistik Penduduk Berdasarkan Jenis Kelamin</h3>
+          <h3 class="panel-title text-center">Statistik Penduduk <br> Berdasarkan Jenis Kelamin</h3>
         </div>
         <div class="panel-body">
           <div id="pieChartBerdasarkanJenisKelamin" style="width: 100%;"></div>
         </div>
-        <div class="panel-footer">
+        <!-- <div class="panel-footer">
           <p>
             Statistik ini menunjukkan distribusi penduduk berdasarkan jenis kelamin.
             Laki-laki: <?= $jumlah_warga_l['total']; ?> orang,
@@ -35,7 +35,7 @@
           <a href="../warga" class="btn btn-primary" role="button">
             <span class="glyphicon glyphicon-book"></span> Detil »
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -43,12 +43,12 @@
     <div class="col-lg-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Statistik Penduduk Berdasarkan Usia</h3>
+          <h3 class="panel-title text-center">Statistik Penduduk <br> Berdasarkan Usia</h3>
         </div>
         <div class="panel-body">
           <div id="pieChartBerdasarkanUsia" style="width: 100%;"></div>
         </div>
-        <div class="panel-footer">
+        <!-- <div class="panel-footer">
           <p>
             Warga di atas 17 tahun: <?= $jumlah_warga_ld_17['total']; ?> orang, 
             di bawah 17 tahun: <?= $jumlah_warga_kd_17['total']; ?> orang.
@@ -57,22 +57,33 @@
           <a href="../warga" class="btn btn-primary" role="button">
             <span class="glyphicon glyphicon-book"></span> Detil »
           </a>
-        </div>
+        </div> -->
       </div>
     </div>
-  </div>
 
-  <div class="row">  
-    <!-- Kolom 1: Pie Chart Berdasarkan Jenis Kelamin -->
     <div class="col-lg-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Statistik Penduduk Berdasarkan Agama</h3>
+          <h3 class="panel-title text-center">Statistik Penduduk <br> Berdasarkan Agama</h3>
         </div>
         <div class="panel-body">
 
 
-          <div id="barChartAgama" style="width: 100%;"></div>
+          <div id="pieChartAgama" style="width: 100%;"></div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">Statistik Penduduk <br> Berdasarkan Status Perkawinan</h3>
+        </div>
+        <div class="panel-body">
+
+
+          <div id="pieChartStatus" style="width: 100%;"></div>
         </div>
         
       </div>
@@ -201,42 +212,57 @@
 
 
 <script>
-  const labelAgama = <?= json_encode(array_keys($jumlah_agama)); ?>;
-  const dataAgama = <?= json_encode(array_values($jumlah_agama)); ?>;
+  document.addEventListener("DOMContentLoaded", function () {
+    var options = {
+      chart: {
+        type: 'pie',
+        // height: 400
+      },
+      series: <?= $dataAgama ?>,
+      labels: <?= $labelsAgama ?>,
+      legend: {
+        position: 'bottom'
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: { width: 300 }
+        }
+      }]
+    };
 
-  const options = {
-    chart: {
-      type: 'bar',
-      height: 400
-    },
-    series: [{
-      name: 'Jumlah Warga',
-      data: dataAgama
-    }],
-    xaxis: {
-      categories: labelAgama
-    },
-    colors: ['#00E396', '#0090FF', '#FEB019', '#FF4560', '#775DD0', '#3F51B5'],
-    plotOptions: {
-      bar: {
-        distributed: true,
-        horizontal: false
-      }
-    },
-    dataLabels: {
-      enabled: true
-    },
-    title: {
-      text: 'Distribusi Penduduk Berdasarkan Agama',
-      align: 'center'
-    },
-    legend: {
-      show: false
-    }
-  };
+    var chart = new ApexCharts(document.querySelector("#pieChartAgama"), options);
+    chart.render();
+  });
+</script>
 
-  const chart = new ApexCharts(document.querySelector("#barChartAgama"), options);
-  chart.render();
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var optionsStatus = {
+      chart: {
+        type: 'pie',
+        // height: 400
+      },
+      series: <?= $dataStatus ?>,
+      labels: <?= $labelsStatus ?>,
+      legend: {
+        position: 'bottom'
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: { width: 300 }
+        }
+      }]
+    };
+
+    var chartStatus = new ApexCharts(document.querySelector("#pieChartStatus"), optionsStatus);
+    chartStatus.render();
+  });
 </script>
 
 <?php include('../_partials/bottom.php') ?>

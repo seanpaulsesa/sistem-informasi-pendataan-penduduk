@@ -56,24 +56,32 @@ $query_mutasi_kd_17 = "SELECT COUNT(*) AS total FROM mutasi WHERE TIMESTAMPDIFF(
 $hasil_mutasi_kd_17 = mysqli_query($db, $query_mutasi_kd_17);
 $jumlah_mutasi_kd_17 = mysqli_fetch_assoc($hasil_mutasi_kd_17);
 
-// hitung statistik warga berdasarkan agama
-// nama tabel: warga
-// nama field: agama_warga 
-// enum('Islam','Kristen','Katholik','Hindu','Budha','Konghucu')
+// Hitung jumlah warga berdasarkan agama
+$agama_list = ['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha', 'Konghucu'];
+$jumlah_agama = [];
 
-// total agama islam
-// Daftar agama sesuai enum
-$daftar_agama = ['Islam', 'Kristen', 'Katholik', 'Hindu', 'Budha', 'Konghucu'];
-
-// Inisialisasi dengan nilai default 0
-$jumlah_agama = array_fill_keys($daftar_agama, 0);
-
-// Ambil data dari database
-$query_agama = "SELECT agama_warga, COUNT(*) AS total FROM warga GROUP BY agama_warga";
-$hasil_agama = mysqli_query($db, $query_agama);
-
-// Isi data dari database
-while ($row = mysqli_fetch_assoc($hasil_agama)) {
-    $jumlah_agama[$row['agama_warga']] = (int) $row['total'];
+foreach ($agama_list as $agama) {
+    $query = "SELECT COUNT(*) AS total FROM warga WHERE agama_warga = '$agama'";
+    $hasil = mysqli_query($db, $query);
+    $data = mysqli_fetch_assoc($hasil);
+    $jumlah_agama[$agama] = (int)$data['total'];
 }
 
+// Siapkan data untuk chart
+$labelsAgama = json_encode(array_keys($jumlah_agama));
+$dataAgama = json_encode(array_values($jumlah_agama));
+
+// Hitung jumlah warga berdasarkan status perkawinan
+$status_list = ['Kawin', 'Tidak Kawin'];
+$jumlah_status = [];
+
+foreach ($status_list as $status) {
+    $query = "SELECT COUNT(*) AS total FROM warga WHERE status_perkawinan_warga = '$status'";
+    $hasil = mysqli_query($db, $query);
+    $data = mysqli_fetch_assoc($hasil);
+    $jumlah_status[$status] = (int)$data['total'];
+}
+
+// Siapkan data untuk chart
+$labelsStatus = json_encode(array_keys($jumlah_status)); // ["Kawin", "Tidak Kawin"]
+$dataStatus = json_encode(array_values($jumlah_status)); // [jumlah_kawin, jumlah_tidak_kawin]

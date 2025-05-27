@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="btn" href="../dasbor">
+      <a class="text-primary text-uppercase" href="../dasbor" style="display: flex; align-items: center;  text-decoration: none;margin-top: 10px;">
         <img src="../../assets/img/logo-kota-jayapura.png" alt="Logo" style="height: 30px; margin-right: 10px;">
         Aplikasi Pendataan Warga
 
