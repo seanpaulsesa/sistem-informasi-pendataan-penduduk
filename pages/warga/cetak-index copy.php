@@ -7,16 +7,8 @@ class PDF extends FPDF
     // Page header
     function Header()
     {
-        // Logo
-          $this->Image('../../assets/img/logo-jakbar.jpg',20,10);
-        // $this->Image(__DIR__ . '/../../assets/img/logo-jakbar.jpg', 20, 10);
-        // $this->Image('../../assets/img/logo-jakbar.jpg',20,10);
-
-//         $path = realpath(__DIR__ . '/../../assets/img/logo-kota-jayapura.png');
-// if (!$path || !file_exists($path)) {
-//     die("File gambar tidak ditemukan di: " . $path);
-// }
-// $this->Image($path, 20, 10);
+      // Logo
+      $this->Image('../../assets/img/logo-jakbar.jpg',20,10);
 
     	// Arial bold 15
     	$this->SetFont('Times','B',15);

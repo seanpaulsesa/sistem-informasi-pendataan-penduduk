@@ -14,6 +14,9 @@ if (isset($_SESSION['user'])) {
     html, body {
       height: 100%;
       margin: 0;
+      background-image: url('../../assets/img/bg.png');
+      background-size: cover;
+      background-position: top;
     }
 
     .center-container {
