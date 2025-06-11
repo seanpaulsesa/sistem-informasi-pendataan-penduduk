@@ -19,7 +19,7 @@
         </a>
       </div>
       <div class="col-md-2">
-        <a href="../kartu-keluarga/cetak-index.php" class="btn btn-primary" target="_blank">
+        <a href="index_cetak.php" class="btn btn-primary" target="_blank">
           <i class="glyphicon glyphicon-print"></i> Cetak
         </a>
       </div>
